@@ -4,8 +4,8 @@
 // @version 3.0.4
 // @description Shows only faction members that are in the hospital and online, and hides the rest.
 // @author Goltred and Reborn121
-// @updateURL https://raw.githubusercontent.com/Goltred/tornscripts/master/torn-hospital.user.js
-// @downloadURL https://raw.githubusercontent.com/Goltred/tornscripts/master/torn-hospital.user.js
+// @updateURL https://github.com/pjfry2184575/tornscripts/raw/master/torn-hospital.user.js
+// @downloadURL https://github.com/pjfry2184575/tornscripts/raw/master/torn-hospital.user.js
 // @match https://www.torn.com/factions.php*
 // @match https://www.torn.com/profiles.php?XID=*
 // @match https://www.torn.com/hospitalview.php*
