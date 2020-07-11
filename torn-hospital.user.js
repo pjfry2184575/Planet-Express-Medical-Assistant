@@ -242,6 +242,7 @@ class FactionView {
       const row = new MemberRow($(r));
       row.checkVisibility(filter, disabled);
     });
+    HospitalUI.updateSummary();
   }
 
   static async toggleRevivesOff() {
@@ -322,6 +323,8 @@ class FactionView {
     FactionView.updateHospitalTime();
     FactionView.toggleDescription(options.hideDescription);
     FactionView.toggleWalls(options.hideWalls);
+    HospitalUI.createSummaryDiv($('#tch-controls'));
+    HospitalUI.updateSummary();
   }
 }
 
@@ -354,8 +357,62 @@ class Filter {
   }
 }
 class HospitalUI {
+  static updateSummary() {
+    const hiddenOkay = $(`.member-list > li:contains("Okay"):hidden`).length;
+    const hiddenTravelling = $(`.member-list > li:contains("Traveling"):hidden`).length;
+    const hiddenJail = $(`.member-list > li:contains("Jail"):hidden`).length;
+    const hiddenOffline = $(`.member-list > li${selectors.offline}:hidden`).length;
+    const totalHospital = $(`.member-list > li:contains("Hospital"):visible`).length;
+    const totalHidden = hiddenOkay + hiddenTravelling + hiddenJail + hiddenOffline;
+    const visible = $(`.member-list > li:visible`).length;
+    const total = hiddenOkay + hiddenTravelling + hiddenJail + hiddenOffline + visible;
+
+    $('#tch-hiddenOkay').text(hiddenOkay);
+    $('#tch-hiddenTravelling').text(hiddenTravelling);
+    $('#tch-hiddenJail').text(hiddenJail);
+    $('#tch-hiddenOffline').text(hiddenOffline);
+    $('#tch-possible').text(totalHospital);
+    $('#tch-visible').text(visible);
+    $('#tch-total').text(total);
+    $('#tch-totalHidden').text(totalHidden);
+  }
+
+  static createSummaryDiv(insertBeforeNode) {
+    // Hidden Okay
+    const summaryDiv = $(`
+    <div id="tch-summary" class="faction-info-wrap another-faction" style="display: grid;">
+      <div class="title-black top-round m-top10"></div>
+      <div class="faction-info bottom-round" style="padding: 10px;">
+        <div style="width: 70%; float: left;">
+
+          <img src="https://i.gyazo.com/426e395a4c001ab772a67e6e943405e8.png" style="float:left; width: 20%;">
+          <div style="margin-left: 20%">
+            <h3>Dr. Zoidberg says:</h3>  
+            <p>
+            Hello! There are currently <strong><span id="#tch-possible" style="color:red;">0</span></strong> possible patients. I see the following <span id="tch-totalHidden">Y</span> members have been removed from our care:
+            </p>
+            <ul style="margin-top:5px;">
+            <li>Okay: <span id="tch-hiddenOkay">0</span></li>
+            <li>Travelling: <span id="tch-hiddenTravelling">0</span></li>
+            <li>Jail: <span id="tch-hiddenJail">0</span></li>
+            <li>Offline: <span id="tch-hiddenOffline">0</span></li>
+            </ul>
+        
+            <p style="margin-top:5px;">
+            <strong>We are currently looking at a list of <span id="tch-visible">D</span> names, accounting for a total of <span id="tch-total">E</span> members</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    `);
+
+    insertBeforeNode.before(summaryDiv);
+  }
+
   static controls(options) {
     const membersParent = $('div.f-war-list').parent();
+
     const controlsDiv = $(`
       <div id="tch-controls" class="faction-info-wrap another-faction" style="display: grid;">
         <div class="title-black top-round m-top10">Torn Hospital - Filters</div>
