@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name Torn Faction Filter
+// @name Planet Express Medical Assistant
 // @namespace https://github.com/Goltred/tornscripts
-// @version 3.0.4
+// @version 1.0.0
 // @description Shows only faction members that are in the hospital and online, and hides the rest.
 // @author Goltred and Reborn121
 // @updateURL https://github.com/pjfry2184575/tornscripts/raw/master/torn-hospital.user.js
