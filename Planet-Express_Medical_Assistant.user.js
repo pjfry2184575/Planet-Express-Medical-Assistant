@@ -424,17 +424,17 @@ class HospitalUI {
               <input type="checkbox" id="tch-offline" name="tch-offline" ${options.hideOffline ? 'checked': ''}>
               <label for="tch-offline">Hide Offline</label>
               <input type="checkbox" id="tch-online" name="tch-online" ${options.hideOnline ? 'checked': ''}>
-              <label for="tch-online">Hide Online</label>
+              <label for="tch-online">Hide Online</label>\n
             </p>
             <p>
               <label for="tch-threshold">Hospital Time Threshold (minutes)</label>
-              <input type="number" id="tch-threshold" name="tch-threshold" value="${options.hideThreshold}">
+              <input type="number" id="tch-threshold" name="tch-threshold" value="${options.hideThreshold}">\n
             </p>
             <p>
               <input type="checkbox" id="tch-traveling" name="tch-traveling" ${options.hideTraveling ? 'checked': ''}>
               <label for="tch-traveling">Hide Traveling</label>
               <input type="checkbox" id="tch-jail" name="tch-jail" ${options.hideJail ? 'checked': ''}>
-              <label for="tch-jail">Hide Jailed</label>
+              <label for="tch-jail">Hide Jailed</label>\n
               <input type="checkbox" id="tch-okay" name="tch-okay" ${options.hideOkay ? 'checked': ''}>
               <label for="tch-okay">Hide Okay</label>
               <input type="checkbox" id="tch-hospital" name="tch-hospital" ${options.hideHospital ? 'checked': ''}>
@@ -446,7 +446,7 @@ class HospitalUI {
               <input type="checkbox" id="tch-walls" name="tch-walls" ${options.hideWalls ? 'checked': ''}>
               <label for="tch-walls">Hide Walls</label>
               <input type="checkbox" id="tch-revoff" name="tch-revoff" ${options.hideRevivesOff ? 'checked': ''}>
-              <label for="tch-revoff">Hide Revives Off</label>
+              <label for="tch-revoff">Hide Revives Off</label>\n
             </p>
           </div>
           <div style="float: right;">
